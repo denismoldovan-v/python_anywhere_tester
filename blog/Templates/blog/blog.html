@@ -1,0 +1,25 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block css_files %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/stuff.css' %}">
+{% endblock %}
+{% block content %}
+<div class="all_stuff">
+	<div class="denis">
+		<h1 class="denis_header">Denis' Blog</h1>
+		<h2 class="statistics">Denis has written {{ count }} blog{{ count|pluralize }}</h2>
+	</div>
+	<div class="articles">
+		{% for a in blog_cs %}
+		<div class="article">
+			<a href="{% url 'blog:detail' a.id %}" class="links"><h2>{{ a.title }}</h2></a>
+			<div class="article_info">
+				<b class="article_date">{{ a.date| date:"M-d-Y H:m" }}</b>
+				<p class="article_description">{{ a.description|safe|truncatechars:120 }}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+		
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block css_files %}
+<link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/home.css' %}">
+{% endblock %}
+{% block content %}
+	<h1 class="headr">Welcome to my site!</h1>
+	{% load static %}
+	<img src="{% static 'portfolio/images/DENIS.jpg' %}" class="myimg" width = "550px"/>
+	<p class="text_denis">It's daddy of the site - Denis Moldovan</p>
+	{% for project in projects %}
+	<h2>{{ project.title }}</h2>
+	<p><img src="{{ project.img.url }}"/><br>{{ project.description }}<br><a href="{{ project.url }}">Link</a></p>
+	{% endfor %}
+{% endblock %}
